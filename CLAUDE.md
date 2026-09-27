@@ -73,7 +73,10 @@ kept:
   markdown (a checkbox, a "still to come" paragraph); move the card.
 - **The record lives in the repo's files** (backlog, specs, `CLAUDE.md`):
   what shipped, why it is built that way, what it taught. When the work
-  lands, rewrite its backlog entry as record in the same PR.
+  lands, update the record in the same PR: rewrite the backlog entry as
+  the record, or, where the repo keeps its write-ups elsewhere (its
+  `CLAUDE.md` or a `docs/` file), write it there and leave the backlog
+  entry as a pointer to it. Either way, one copy of the reasoning.
 - The code is the final word. If the board, a backlog entry and the code
   disagree, check the code, then fix whichever is wrong.
 

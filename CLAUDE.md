@@ -34,6 +34,15 @@
 - When uncertainty matters, say clearly what is fact, what is inference and
   what is a guess.
 
+## Naming the session
+
+- When Louis asks for a card, issue or backlog item ("grab the next card"),
+  once you know which one it is, rename the session to its number and
+  title, e.g. `#42 Add glossary export`. Use the session-title tool
+  (`set_session_title`) when the session has it. Where it does not, say
+  the title in the first line of your reply so Louis can rename it.
+- Never leave the session on a generic title such as "Next card".
+
 ## Git and pull requests
 
 1. **Never merge without being asked.** Push the branch, open the PR,

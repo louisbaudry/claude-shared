@@ -106,6 +106,9 @@ kept:
   check that it fails when the thing it tests is broken.
 - In any script that pipes a check's output (`cmd | tee log`), use
   `set -o pipefail`. Otherwise the pipe hides the command's exit code.
+- **At the end of the session, before creating the PR, update all relevant
+  markdown files** (backlog, specs, `CLAUDE.md`, `docs/`, README) so the
+  record lands in the same PR as the code.
 
 ## Design decisions go on the record
 

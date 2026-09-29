@@ -19,7 +19,8 @@
 
 ## Communication
 
-- Be concise. Skip explanations unless asked. No summaries after routine edits.
+- Least possible verbosity: answer first, then stop. No recaps, no restating the
+  request, no summaries after routine edits, no explanations unless asked.
 - Match the language Louis is writing in (French, English or Spanish).
 - **When asking Louis a question, always propose several options and a
   recommendation.** Never ask an open-ended question on its own. Lay out

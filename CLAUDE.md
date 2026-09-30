@@ -1,8 +1,15 @@
 # Working with Louis (universal CLAUDE.md)
 
 > Shared instructions for Claude Code in **every** repository Louis works in.
-> Each repo's own `CLAUDE.md` loads this file at session start and then adds
-> only what is specific to that repo. Who Louis is and his broader
+> Each repo's own `CLAUDE.md` loads this file at session start, then the one
+> set that matches the repo, then adds only what is specific to that repo:
+>
+> - [`CODING.md`](CODING.md): repos that ship code (apps, scripts, libraries).
+> - [`NON-CODING.md`](NON-CODING.md): repos that store non-code work
+>   (documents, research, content, translations, notes, data).
+>
+> A repo that is both (code plus a corpus) links both. This file holds only
+> what is true for either kind. Who Louis is and his broader
 > preferences live in `ai_profile.md` in his private `ai_profile` repo,
 > loaded alongside this file when the session can reach it; this file is
 > about how to work with him in a codebase.
@@ -92,37 +99,22 @@ kept:
 
 ## Before calling work done
 
-- Run the repo's full set of checks (format, lint, typecheck, build,
-  tests, whatever it defines) and report the result honestly.
-- **If a check fails, the change is presumed wrong, not the check.** Don't
-  regenerate expected outputs, loosen an assertion, or skip a test to get
-  to green. A golden or snapshot diff is something to read and explain,
-  not something to overwrite.
-- **Say what was verified and what was not.** Where a repo has no
-  automated tests, say exactly what you ran by hand and what you saw;
-  "works locally" is not reviewable. Where something could not be checked
-  from this session (no network to a host, no real sample), say so plainly.
-- A test that has never been seen to fail proves nothing. When adding one,
-  check that it fails when the thing it tests is broken.
-- In any script that pipes a check's output (`cmd | tee log`), use
-  `set -o pipefail`. Otherwise the pipe hides the command's exit code.
+- **Say what was verified and what was not.** Where something could not be
+  checked from this session (no network to a host, no real sample), say so
+  plainly. "Looks fine" is not reviewable.
 - **At the end of the session, before creating the PR, update all relevant
   markdown files** (backlog, specs, `CLAUDE.md`, `docs/`, README) so the
-  record lands in the same PR as the code.
+  record lands in the same PR as the change.
+- The kind-specific checks are in `CODING.md` or `NON-CODING.md`.
 
 ## Design decisions go on the record
 
-- Write a design decision (a data model, a file-format detail, a scope
-  change) into the repo's docs before or alongside the code, never after.
+- Write a decision (a data model, a file-format detail, a scope change, a
+  method) into the repo's docs before or alongside the change, never after.
   Keep the reasoning, not just the conclusion.
-- Inspect the existing architecture before proposing large changes.
-  Prefer maintainable solutions over clever ones, and don't replace a
-  working system just because another stack is fashionable.
-- **Define a shared fact once and import it everywhere.** Two copies of a
-  constant, schema or regex can drift apart without anyone noticing.
-- A test fixture that encodes a belief about someone else's format proves
-  only that belief. Check it against a real sample before trusting the
-  tests built on it.
+- Inspect what exists before proposing large changes. Prefer maintainable
+  solutions over clever ones, and don't replace a working system just
+  because another approach is fashionable.
 
 ## AI output is a proposal, not a fact
 

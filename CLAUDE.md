@@ -52,9 +52,10 @@
 
 ## Git and pull requests
 
-1. **Never merge without being asked.** Push the branch, open the PR,
-   describe what it does, then wait. Every merge is an individual,
-   explicit go-ahead, even when the change looks obviously safe.
+1. **Never merge without being asked**, unless the repo is in
+   autonomous mode (below). Push the branch, open the PR, describe what it
+   does, then wait. Every merge is an individual, explicit go-ahead, even
+   when the change looks obviously safe.
 2. **One task, one branch, one PR.** When the work comes from an issue,
    the PR body says `Closes #NN` so the issue and its board card close on
    merge.
@@ -79,6 +80,44 @@
    why: everything pushed and merged with nothing in flight (safe), or
    unpushed work, an open PR, a running job or a pending question (not
    safe).
+
+## Autonomous mode (opt-in, per repo)
+
+A repo opts in by saying so in its own `CLAUDE.md` ("This repo runs in
+autonomous mode"). Being trialled on one repo before any wider use. In
+such a repo:
+
+- **Merge your own PR when it is ready; don't wait to be asked.** Ready
+  means CI green on the current head, no merge conflict, no open review
+  thread, and nothing in it that needs Louis (below). Merge, then take the
+  next card. Louis reviews merged work after the fact. Never merge a PR
+  another session or person opened unless Louis asks.
+- Questions that don't require Louis become issues, not stops.
+
+### When to stop and ask Louis
+
+Work runs card after card without interruption. Only one thing stops it:
+something that **requires** human intervention. When that happens, always
+stop and ask Louis; never guess past it, never work around it. Those cases
+are:
+
+- **Credentials and consent.** OAuth authorizations, app installs, API
+  keys and secrets, 2FA or CAPTCHA, account creation, payments.
+- **A decision only Louis can make that is costly to reverse.** Business
+  intent the spec doesn't cover, a client preference, a legal or
+  commercial call. A cheap, reversible choice is not a stop: make it,
+  record it in the PR and move on.
+- **Anything irreversible that leaves the repo.** Sending email,
+  publishing, touching production data, deleting what can't be restored,
+  unless that repo's `CLAUDE.md` grants standing authorization for that
+  exact kind of action.
+- **A check that can't be run from the session** and that the work
+  depends on: a real client sample, a blocked host, a device, a judgement
+  of tone or look.
+
+Everything else (a CI failure, a review comment, an ambiguity with a
+sensible default, a bug found in passing) is handled without asking: fix
+it, or file it as an issue and continue.
 
 ## Where work is tracked
 

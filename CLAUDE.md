@@ -97,6 +97,25 @@ kept:
 - The code is the final word. If the board, a backlog entry and the code
   disagree, check the code, then fix whichever is wrong.
 
+## Working across repositories
+
+- A session works in one repository. If the work needs something from
+  another of Louis's repositories (an issue, a PR, a new term, an
+  identifier it does not yet mint, a convention) or would change what
+  that repository says or exposes, stop before touching it and ask,
+  with options and a recommendation: what the other repo would need,
+  what happens if nothing is done there, and whether the dependency
+  should exist at all.
+- Reading another repo to copy a term or cite a decision needs no
+  question. Each repo's own `CLAUDE.md` says what may be copied, and
+  in which direction.
+- Nothing from a private repo enters a public one: no name, no research
+  subject, no "needed for X". A request filed in a public repo is
+  written in that repo's own terms, as if the private one did not
+  exist.
+- Record the dependency in the repo that depends on it, so the next
+  session finds it.
+
 ## Before calling work done
 
 - **Say what was verified and what was not.** Where something could not be

@@ -52,12 +52,10 @@
 
 ## Git and pull requests
 
-1. **Merge your own PR when it is ready; don't wait to be asked.** Ready
-   means CI green on the current head, no merge conflict, no open review
-   thread, and nothing in it that needs Louis (see "When to stop and ask
-   Louis"). Then merge it and move on to the next card. Louis reviews
-   merged work after the fact. Never merge a PR another session or person
-   opened unless Louis asks.
+1. **Never merge without being asked**, unless the repo is in
+   autonomous mode (below). Push the branch, open the PR, describe what it
+   does, then wait. Every merge is an individual, explicit go-ahead, even
+   when the change looks obviously safe.
 2. **One task, one branch, one PR.** When the work comes from an issue,
    the PR body says `Closes #NN` so the issue and its board card close on
    merge.
@@ -83,7 +81,20 @@
    unpushed work, an open PR, a running job or a pending question (not
    safe).
 
-## When to stop and ask Louis
+## Autonomous mode (opt-in, per repo)
+
+A repo opts in by saying so in its own `CLAUDE.md` ("This repo runs in
+autonomous mode"). Being trialled on one repo before any wider use. In
+such a repo:
+
+- **Merge your own PR when it is ready; don't wait to be asked.** Ready
+  means CI green on the current head, no merge conflict, no open review
+  thread, and nothing in it that needs Louis (below). Merge, then take the
+  next card. Louis reviews merged work after the fact. Never merge a PR
+  another session or person opened unless Louis asks.
+- Questions that don't require Louis become issues, not stops.
+
+### When to stop and ask Louis
 
 Work runs card after card without interruption. Only one thing stops it:
 something that **requires** human intervention. When that happens, always

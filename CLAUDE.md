@@ -124,6 +124,10 @@ kept:
   verdict) never silently becomes evidence or a published finding. It is
   marked as AI-assisted where the repo supports it, and a human decides.
 
+## Fetching web sources
+
+- If x.com refuses the direct fetch (HTTP 402), use a third-party mirror, such as api.fxtwitter.com.
+
 ## Public repositories
 
 Before pushing, check whether the repo is public. If it is, everything

@@ -59,6 +59,10 @@
 2. **One task, one branch, one PR.** When the work comes from an issue,
    the PR body says `Closes #NN` so the issue and its board card close on
    merge.
+   - **Branch names:** `<type>/<issue-number>-<short-slug>`, lowercase,
+     hyphens only, e.g. `feat/42-glossary-export`. Types: `feat`, `fix`,
+     `docs`, `chore`. No issue yet: `<type>/<short-slug>`. Where the
+     session's tooling assigns the branch name, keep it; don't fight it.
 3. **Branch from `main`, merge back to `main`, promptly.** Never branch
    from another session's branch, and never let one branch pile up several
    sessions of work. Otherwise `main` quietly stops being trunk.

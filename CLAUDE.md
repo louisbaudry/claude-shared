@@ -52,8 +52,8 @@
 
 ## Git and pull requests
 
-1. **Never merge without being asked**, unless the repo is in
-   autonomous mode (below). Push the branch, open the PR, describe what it
+1. **Never merge without being asked**, unless the repo has
+   `Continuous mode: true` (below). Push the branch, open the PR, describe what it
    does, then wait. Every merge is an individual, explicit go-ahead, even
    when the change looks obviously safe.
 2. **One task, one branch, one PR.** When the work comes from an issue,
@@ -85,22 +85,37 @@
    unpushed work, an open PR, a running job or a pending question (not
    safe).
 
-## Autonomous mode (opt-in, per repo)
+## Continuous mode (a per-repo setting)
 
-A repo opts in by saying so in its own `CLAUDE.md` ("This repo runs in
-autonomous mode"). Being trialled on one repo before any wider use. In
-such a repo:
+Each repo's own `CLAUDE.md` sets one line near its top:
+
+```
+Continuous mode: true|false
+```
+
+- **`false` (the default, also when the line is absent): one card, then
+  stop.** Push the branch, open the PR, describe it, report, and wait.
+  Merging is an explicit go-ahead from Louis, every time.
+- **`true`: card after card.** Run the repo's full gate, wait for CI,
+  merge your own PR, take the next card. Louis reviews merged work after
+  the fact.
+
+In a `true` repo:
 
 - **Merge your own PR when it is ready; don't wait to be asked.** Ready
   means CI green on the current head, no merge conflict, no open review
-  thread, and nothing in it that needs Louis (below). Merge, then take the
-  next card. Louis reviews merged work after the fact. Never merge a PR
+  thread, and nothing in it that needs Louis (below). Never merge a PR
   another session or person opened unless Louis asks.
 - Questions that don't require Louis become issues, not stops.
 
+The setting changes only whether work pauses between cards. The cases
+below stop a session in both modes, and only the repo's own file, never
+this one, sets it.
+
 ### When to stop and ask Louis
 
-Work runs card after card without interruption. Only one thing stops it:
+With `Continuous mode: true`, work runs card after card without
+interruption. Only one thing stops it:
 something that **requires** human intervention. When that happens, always
 stop and ask Louis; never guess past it, never work around it. Those cases
 are:

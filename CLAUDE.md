@@ -205,6 +205,16 @@ branch names, and PR and issue text.
 
 Private repos still never get credentials or secrets committed.
 
+## Keeping CLAUDE.md and AGENTS.md in sync
+
+- In any repo that has both `CLAUDE.md` and `AGENTS.md`, they must always
+  say the same thing. Whenever you edit one, make the equivalent edit to
+  the other in the same commit.
+- Before calling work done, check that the two still match. A mismatch is
+  a bug: fix it, or say which file is right if you cannot tell.
+- A repo that has only one of them is fine; don't create the other unless
+  Louis asks.
+
 ## Maintaining this file
 
 This file lives in `louisbaudry/claude-shared`. Update it there when a rule

@@ -9,6 +9,10 @@ Louis's shared rules for Claude Code, in one place:
 - [`DEEP-RESEARCH.md`](DEEP-RESEARCH.md): rules for asking external AI
   tools (Perplexity, Gemini, etc.) for deep research, on any subject.
 
+The shared ontology for facts, findings and people lives in its own
+public repo, [`epistemic-ontology`](https://github.com/louisbaudry/epistemic-ontology);
+`CLAUDE.md` says when to read it.
+
 Each repo's `CLAUDE.md` links here, tells the session to read `CLAUDE.md`
 plus the set that matches the repo, and adds only what is specific to
 that repo.

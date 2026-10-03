@@ -174,6 +174,24 @@ kept:
 - Record the dependency in the repo that depends on it, so the next
   session finds it.
 
+## Shared ontology
+
+Facts, findings, claims, assessments, sources, evidence and people are
+modelled the same way in every repo, by the public
+[`louisbaudry/epistemic-ontology`](https://github.com/louisbaudry/epistemic-ontology).
+
+- **Read it only when the work records or changes such things** (a data
+  model, a vocabulary, an export, a note that states findings). Start with
+  `specs/SPEC-001-core-assertion.md`. Don't load it at session start.
+- A repo that adopts it keeps a short **profile** of the subset it uses, in
+  its own docs. A profile narrows or adds terms; it never gives a core
+  identifier another meaning.
+- Copy terms and cite spec numbers; don't fetch the repo at run time.
+- A need the ontology doesn't meet goes to Louis first, with options, per
+  "Working across repositories". It is rewritten in neutral terms before
+  it is filed there: that repo is public and shared, so no repo's case,
+  subject or client appears in it.
+
 ## Before calling work done
 
 - **Say what was verified and what was not.** Where something could not be

@@ -19,6 +19,36 @@
 - In any script that pipes a check's output (`cmd | tee log`), use
   `set -o pipefail`. Otherwise the pipe hides the command's exit code.
 
+## Tests
+
+Agents write most of the code, so tests are the independent check. The
+policy is tiered by risk, not blanket TDD.
+
+1. **Test first (red, then green) for:**
+   - **Bug fixes.** Write a test that reproduces the bug and watch it fail,
+     then fix. The fix PR carries that test.
+   - **Hard invariants** of the repo: a rule that must never break
+     (a spending or length cap, an access rule, a no-leak guarantee, an
+     idempotency guarantee). Each one gets a test before the code that
+     enforces it, and the repo's `CLAUDE.md` lists them.
+2. **Test with the code, same PR, any order,** for everything else that
+   has logic. A PR that adds logic with no test says why in its body.
+3. **No test needed** for copy, styling, markdown and one-off data edits.
+4. **Never weaken a test to get green:** see "Before calling work done".
+   Changing an existing test is fine when the behavior was meant to
+   change; the PR says so and why.
+5. **The PR says what was tested and what could not be.** CI running the
+   suite is a required check before any merge; a repo with code and no CI
+   suite files a card for it.
+6. **Shape of a good agent-era test:**
+   - Runs offline: no API keys, no network, no shared database.
+   - Asserts behavior and contracts, not implementation details.
+   - For SQL and row-level security, run the migrations on a scratch
+     Postgres and assert as each role (anonymous, owner, end user).
+7. **LLM output:** don't test the model. Test the code that enforces rules
+   on its answer (validators, filters, parsers). Prompt changes get a
+   small fixed set of golden cases, read by a human when they differ.
+
 ## Parallel sessions on one repo
 
 Several sessions may work on the same repo at once if they do not collide.

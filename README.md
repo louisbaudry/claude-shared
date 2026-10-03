@@ -6,6 +6,8 @@ Louis's shared rules for Claude Code, in one place:
 - [`CODING.md`](CODING.md): extra rules for repos that ship code.
 - [`NON-CODING.md`](NON-CODING.md): extra rules for repos that store
   documents, research, content or data.
+- [`DEEP-RESEARCH.md`](DEEP-RESEARCH.md): rules for asking external AI
+  tools (Perplexity, Gemini, etc.) for deep research, on any subject.
 
 Each repo's `CLAUDE.md` links here, tells the session to read `CLAUDE.md`
 plus the set that matches the repo, and adds only what is specific to

@@ -19,6 +19,32 @@
 - In any script that pipes a check's output (`cmd | tee log`), use
   `set -o pipefail`. Otherwise the pipe hides the command's exit code.
 
+## Parallel sessions on one repo
+
+Several sessions may work on the same repo at once if they do not collide.
+
+- **Claim before starting.** Assign the issue to yourself, or add an
+  `in-progress` label, and skip any card that already has one. "Todo" does
+  not mean free. Two sessions taking "the next card" at once is the commonest
+  failure.
+- **One area per session.** Split cards by module or file set, not just by
+  order. Don't start a card that overlaps files an open PR already touches;
+  say so and ask.
+- **Re-gate after syncing `main`.** Before merging, merge current `main`
+  into the branch and re-run the full checks on the result. A clean git merge
+  can still break behaviour; only the checks show it. Never merge on a CI
+  result that predates the latest `main`.
+- **Shared record files conflict by design** (backlog, changelog, `CLAUDE.md`).
+  Keep entries small and in separate sections; whoever merges second resolves
+  the conflict by keeping both sides, never by dropping the other session's
+  entry.
+- **State outside git is shared too:** database migrations (check the next
+  number against `main` just before merging), lockfiles and generated files
+  (regenerate with the repo's tooling, don't hand-merge), a shared dev
+  database, ports, deploys. Run migrations and deploys only from the session
+  that owns that area, and never against shared or production data from a
+  session that doesn't.
+
 ## Design
 
 - **Define a shared fact once and import it everywhere.** Two copies of a

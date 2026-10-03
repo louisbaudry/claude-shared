@@ -38,6 +38,24 @@
 - Fixtures use synthetic data. Real client or personal data never goes in
   a fixture, even trimmed (see the public-repo rules in `CLAUDE.md`).
 
+## Supabase permissions
+
+Permission rules are read from the session repo's own `.claude/settings.json`,
+not from this repo, so each repo that uses Supabase copies a snippet from
+[`settings/`](settings/):
+
+- **Default (every Supabase repo):** merge `supabase-read.json`. Read-only
+  tools no longer prompt. `execute_sql`, migrations, edge-function deploys
+  and every branch or project action still prompt.
+- **Insert and update allowed, no delete:** merge `supabase-write.json`
+  instead, and copy `block-sql-destructive.sh` to `.claude/hooks/`. It
+  allows `execute_sql` and a hook blocks delete, drop, truncate, alter,
+  create, grant, revoke and copy. The hook is a keyword check, not a
+  security boundary; real enforcement is database privileges.
+- A permission rule cannot tell a `SELECT` from a `DELETE`, which is why
+  write access goes through the hook. Never put a project ref or key in a
+  snippet here: this repo is public.
+
 ## AI output in code
 
 - Generated code is a proposal: read it, run it, and be able to explain it

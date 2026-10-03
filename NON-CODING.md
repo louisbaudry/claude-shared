@@ -55,6 +55,12 @@
 - When unsure whether something identifies a person or a client, leave it
   out and ask.
 
+## Deep research with external tools
+
+- Asking Perplexity, Gemini or another tool for deep research follows
+  [`DEEP-RESEARCH.md`](DEEP-RESEARCH.md): public-source prompts only, a
+  required prompt structure, and verification before anything counts.
+
 ## AI output in content
 
 - Model output (a draft, translation, extraction, classification,

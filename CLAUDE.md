@@ -106,6 +106,17 @@ In a `true` repo:
   means CI green on the current head, no merge conflict, no open review
   thread, and nothing in it that needs Louis (below). Never merge a PR
   another session or person opened unless Louis asks.
+- **No draft stop in a `true` repo.** Cloud sessions open PRs as drafts
+  by default, and a draft cannot be merged. `Continuous mode: true` is
+  Louis's standing instruction to override that default: open the PR
+  ready for review when the tool allows it, otherwise take it out of
+  draft (`update_pull_request` with `draft: false`) as soon as it is
+  pushed. Never leave a draft for Louis to promote; he does not
+  validate PRs one by one in this mode. In a `false` repo, leave the PR
+  as a draft.
+- **Do not end the turn on a ready PR.** Waiting for CI is not a reason
+  to stop: check CI on the current head, then un-draft and merge in the
+  same run, then take the next card.
 - Questions that don't require Louis become issues, not stops.
 
 The setting changes only whether work pauses between cards. The cases

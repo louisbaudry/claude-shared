@@ -49,6 +49,31 @@ policy is tiered by risk, not blanket TDD.
    on its answer (validators, filters, parsers). Prompt changes get a
    small fixed set of golden cases, read by a human when they differ.
 
+## Code comments
+
+- **Document the public surface.** Every public module, class and function
+  gets a doc comment in the language's native format (YARD, JSDoc,
+  docstring, rustdoc), so the repo's docs can be generated from it:
+  what it does, its parameters, what it returns, what it raises.
+- **Inline comments say why, not what.** Explain a constraint, a trade-off
+  or a surprise. Don't narrate code that already reads clearly.
+- Change behavior, change the comment in the same commit. A stale comment
+  is worse than none.
+- Match the repo's existing comment density and format; this rule fills
+  gaps, it doesn't trigger a rewrite of a documented codebase.
+
+### One-time sync (pending)
+
+A repo records that it has applied this rule by adding the line
+`Code comments rule synced: YYYY-MM-DD` to its own `CLAUDE.md`. In a
+session on a coding repo whose `CLAUDE.md` lacks that line, before the
+task: check the repo's `CLAUDE.md` (and `AGENTS.md` if present) against
+"Code comments" above, add or adjust only what is missing or contradicts
+it, and add the line. Do this in its own small PR, not mixed into the
+task's PR. Never edit another repo from a session; each repo does its own
+on its next session. Louis removes this subsection once the repos are
+synced.
+
 ## Parallel sessions on one repo
 
 Several sessions may work on the same repo at once if they do not collide.
